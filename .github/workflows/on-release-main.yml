@@ -4,6 +4,10 @@ on:
   release:
     types: [published]
 
+# Add workflow-level permissions
+permissions:
+  contents: write  # Required for pushing to gh-pages
+
 jobs:
   set-version:
     runs-on: ubuntu-24.04
@@ -63,9 +67,19 @@ jobs:
   deploy-docs:
     needs: publish
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Check out
+      - name: Check out with full history
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for proper gh-pages branch handling
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use the built-in token
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
@@ -80,3 +94,5 @@ jobs:
 
       - name: Deploy documentation
         run: uv run mkdocs gh-deploy --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

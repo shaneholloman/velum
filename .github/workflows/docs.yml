@@ -14,17 +14,30 @@ on:
       - "docs/**"
       - "mkdocs.yml"
 
+permissions:
+  contents: write # This is required for pushing to gh-pages
+
 jobs:
   deploy-docs:
     runs-on: ubuntu-24.04
     permissions:
       contents: write # This is required for pushing to gh-pages
     steps:
-      - name: Check out
+      - name: Check out with full history
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for proper gh-pages branch handling
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use the built-in token
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
 
       - name: Deploy documentation
         run: uv run mkdocs gh-deploy --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
