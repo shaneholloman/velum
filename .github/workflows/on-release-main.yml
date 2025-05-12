@@ -6,7 +6,7 @@ on:
 
 # Add workflow-level permissions
 permissions:
-  contents: write  # Required for pushing to gh-pages
+  contents: write # Required for pushing to gh-pages
 
 jobs:
   set-version:
@@ -73,8 +73,8 @@ jobs:
       - name: Check out with full history
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for proper gh-pages branch handling
-          token: ${{ secrets.GITHUB_TOKEN }}  # Use the built-in token
+          fetch-depth: 0 # Fetch all history for proper gh-pages branch handling
+          token: ${{ secrets.GITHUB_TOKEN }} # Use the built-in token
 
       - name: Configure Git
         run: |
