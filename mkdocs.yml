@@ -1,7 +1,7 @@
 site_name: velum
 repo_url: https://github.com/shaneholloman/velum
 site_url: https://shaneholloman.github.io/velum
-site_description: from ork
+site_description: A Python project template with a focus on simplicity and ease of use
 site_author: Shane Holloman
 edit_uri: edit/main/docs/
 repo_name: shaneholloman/velum
@@ -90,7 +90,7 @@ markdown_extensions:
       normalize_issue_symbols: true
       repo_url_shorthand: true
       user: shaneholloman
-      repo: uvi
+      repo: velum
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets
