@@ -70,6 +70,7 @@ To enable automatic documentation deployment:
 
 1. Go to your repository's Settings → Pages
 2. Under "Build and deployment":
+
    - Set "Source" to "Deploy from a branch"
    - Set "Branch" to "gh-pages"
    - Set "Directory" to "/" (root)

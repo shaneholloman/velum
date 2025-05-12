@@ -21,9 +21,10 @@ pymdownx.superfences:
   custom_fences:
     - name: mermaid
       class: mermaid
-      format: !!python/name:pymdownx.superfences.fence_code_format
+      format:
+        !!python/name:pymdownx.superfences.fence_code_format # For tabbed interfaces - preserve exactly as shown
 
-# For tabbed interfaces - preserve exactly as shown
+
 pymdownx.tabbed:
   alternate_style: true
   combine_header_slug: true

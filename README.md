@@ -74,6 +74,7 @@ To publish your package to PyPI:
    ```
 
    Alternatively, add it manually in your repository's Settings → Secrets → Actions → New repository secret
+
 3. When creating a new release on GitHub, the workflow will automatically publish your package to PyPI
 
 ## Setting up GitHub Pages Documentation
@@ -82,6 +83,7 @@ To enable automatic documentation deployment:
 
 1. Go to your repository's Settings → Pages
 2. Under "Build and deployment":
+
    - Set "Source" to "Deploy from a branch"
    - Set "Branch" to "gh-pages"
    - Set "Directory" to "/" (root)
