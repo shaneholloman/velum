@@ -33,13 +33,21 @@ The included sample application (`velum`) is a proof of concept that demonstrate
 
 ### 2. Set Up Your Development Environment
 
-Install the environment and the pre-commit hooks with:
+> **IMPORTANT: First Required Step After Cloning**
+>
+> Always run the following command immediately after cloning this template to your machine:
 
 ```sh
 make install
 ```
 
-This will also generate your `uv.lock` file.
+This critical step:
+
+- Installs the virtual environment with `uv sync`
+- Sets up pre-commit hooks that **automatically fix formatting issues** when committing via terminal OR VSCode
+- Generates your `uv.lock` file
+
+Without this step, pre-commit hooks won't run automatically and you'll need to manually fix formatting issues with `make check` before each commit.
 
 ### 3. Run the pre-commit hooks
 
@@ -101,7 +109,7 @@ You can preview the documentation locally by running:
 uv run mkdocs serve
 ```
 
-This will start a local server at http://127.0.0.1:8000/ where you can preview your documentation as you work on it.
+This will start a local server at <http://127.0.0.1:8000/> where you can preview your documentation as you work on it.
 
 ## Releasing a new version
 

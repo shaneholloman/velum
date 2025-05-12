@@ -31,11 +31,21 @@ The included sample application (`velum`) is a proof of concept that demonstrate
 
 ### Development Setup
 
-1. Install the environment and the pre-commit hooks:
+1. **IMPORTANT: First Required Step After Cloning**
+
+   Always run the following command immediately after cloning this template:
 
    ```sh
    make install
    ```
+
+   This critical step:
+
+   - Installs the virtual environment with `uv sync`
+   - Sets up pre-commit hooks that automatically fix formatting issues when committing
+   - Generates your `uv.lock` file
+
+   Without this step, pre-commit hooks won't run automatically when committing via terminal or VSCode.
 
 2. Run the pre-commit hooks to resolve potential formatting issues:
 
@@ -86,16 +96,18 @@ You can preview the documentation locally by running:
 uv run mkdocs serve
 ```
 
-This will start a local server at http://127.0.0.1:8000/ where you can preview your documentation as you work on it.
+This will start a local server at <http://127.0.0.1:8000/> where you can preview your documentation as you work on it.
 
 ## Releasing a New Version
 
 - Create an API Token on [PyPI](https://pypi.org/) if you haven't already
 - Add the API Token to your project's secrets with the name `PYPI_TOKEN`
 - Create a new release on GitHub using the GitHub CLI:
+
   ```sh
   gh release create 0.1.0 --title "0.1.0" --generate-notes
   ```
+
   This automatically creates both the release and a tag in one step.
 
 The release workflow will automatically:
